@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Run</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            /* background-color: #ADD8E6; */
+        }
+
+        canvas {
+            display: block;
+            /* Ensure canvas is behind the cat */
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Style for the cat image */
+        #catImage,
+        #obj {
+            position: absolute;
+            /* Position relative to the body */
+            left: 20px;
+            /* Horizontal position from the left */
+            /* top will be set dynamically by JS */
+            height: 80px;
+            /* Adjust cat size as needed */
+            width: auto;
+            /* Maintain aspect ratio */
+            z-index: 10;
+            /* Make sure cat is on top of the canvas */
+            /* Prevent image from being dragged */
+            user-select: none;
+            -webkit-user-drag: none;
+            /* Optional: Improve visual placement if GIF has whitespace */
+            /* transform: translateY(5px); */
+            display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- initial screen -->
+    <div id="initScreen">
+        <h2>Cat Run</h2>
+        <p>Ready to play?</p>
+        <p>select the mode in which you want to play</p>
+        <select id="gmMode" style="color: lime; font-weight: 300;">
+            <option>select mode</option>
+            <option value="limiRun">Limited Run</option>
+            <option value="endlRun">Endless Run</option>
+        </select>
+<p id="modeInfo"></p>
+        <div id="obsCountBox" style="display: none;">
+        <label for="obsCountInput" style="color: cornflowerblue; font-weight: 500;">Enter the number of Obstacles to Survive:</label>
+        <input type="number" id="obsCountInput" min="1" placeholder="for example: 10" style="font-family: elephant;">
+        </div>
+                
+        <p>click start to start playing!</p>
+<button id="startBtn">Start Game</button>
+        <details>
+    <summary>How to Play</summary>
+    <h3>Get Ready to Run!</h3>
+    <p>Help the cat run as far as possible! Earn points by avoiding obstacles.</p>
+
+    <h4>Game Modes:</h4>
+    <ul>
+        <li><strong>Limited Run:</strong> You will be given a fixed number of obstacles to survive. The game ends once you crash into any obstacle or if you successfully avoid all obstacles. The number of obstacles to avoid will be set before you start the game. This mode challenges your focus and survival time.</li>
+        <li><strong>Endless Run:</strong> This mode never ends until you crash! The longer you survive, the harder the game becomes. The game gradually increases speed and more obstacles will appear, pushing your reflexes to the limit. Perfect for players looking for a continuous challenge.</li>
+    </ul>
+
+    <p>Actions:</p>
+    <ol>
+        <li><strong>Jump:</strong> Press 'Alt + J' or click the 'Jump' button to jump over Rocks, Low Fences, and Wood Piles.</li>
+        <li><strong>Crawl:</strong> Press 'Alt + C' or click the 'Crawl' button to crawl under Hanging Branches and Tunnels.</li>
+    </ol>
+
+    <h4>Obstacles:</h4>
+    <ul>
+        <li><strong>Jump Over:</strong> Rock, Low Fence, Wood Pile</li>
+        <li><strong>Crawl Under:</strong> Hanging Branches, Tunnel</li>
+    </ul>
+
+    <h4>Gameplay:</h4>
+    <p>React quickly to obstacles! Each correct action will help you avoid crashes and increase your score. In Limited Run, the game ends after hitting the set number of obstacles or successfully avoiding all obstacles. In Endless Run, the game continues until you crash into an obstacle. Both modes will increase in difficulty as you progress, making it harder to survive the longer you play.</p>
+
+    <h4>Difficulty Increase:</h4>
+    <p>As you progress in the game, the difficulty will increase in both modes:</p>
+    <ul>
+        <li><strong>10 Points:</strong> Faster speed, more obstacles.</li>
+        <li><strong>15 Points:</strong> Increased speed and more obstacles.</li>
+        <li><strong>20 Points:</strong> Faster speed, shorter reaction time, and more challenging obstacles.</li>
+        <li><strong>30 Points:</strong> Very fast speed, quick reactions needed, and more frequent obstacles.</li>
+    </ul>
+</details>
+
+    </div>
+
+    <!-- game screen -->
+    <div id="gameScreen" style="display: none;">
+        <canvas id="gameCanvas"></canvas>
+
+        <img id="catImage" src="images/running_cat.gif" alt="Running Cat" width="128" height="80">
+        <img id="obj">
+
+        <button id="crawlBtn" data-action="crawl" class="action-btn" accesskey="C" aria-label="Crawl"><i
+                class="icons fas fa-turn-down"></i> <br> Crawl</button>
+    
+                <button id="jumpBtn" data-action="jump" class="action-btn" accesskey="J" aria-label="Jump"><i
+                    class="icons fas fa-turn-up"></i> <br> Jump</button>
+            </div>
+
+    <!-- final screen -->
+    <div id="finScreen" style="display: none;">
+        <h2>Game Over!</h2>
+        <p id="hitWith">you crash with an opsticle.</p>
+        <h3 id="scoreId">Your Score</h3>
+        <p id="score"></p>
+        <p>wants to play again?</p>
+        <button class="restartBtn" onclick="restart()">Restart Game</button>
+    </div>
+    <div id="statusBox" aria-live="assertive"></div>
+    <script src="script.js"></script>
+    <script src="gameScreen.js"></script>
+</body>
+
+</html>

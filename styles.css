@@ -1,0 +1,213 @@
+body{
+     background-color: #007bff;
+}
+
+/* common styles for initial and final screen */
+#initScreen, #finScreen{
+    background-color: darkblue;
+    margin: 16px auto;
+    padding: 16px;
+    width: 75vw;
+    border: 10px solid gold;
+    border-radius: 15%;
+    transition: opacity 0.5s ease-in-out;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#initScreen p, #finScreen p{
+    text-align: center;
+    color: lime;
+font-weight: bold
+    }
+
+#initScreen h2, #initScreen h3, #finScreen h2, #finScreen h3{
+    text-align: center;
+    color: yellow;
+}
+
+#initScreen button, #finScreen button{
+    background-color: #007bff;
+    color: #ffffff;
+    display: block;
+    margin: 12px auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    color: silver;
+}
+
+#jumpBtn, #crawlBtn{
+display: inline-block;
+background-color: blue;
+color: snow;
+margin: auto;
+padding: 0  ;
+z-index: 15;
+position: absolute;
+bottom: 80px;
+width: 80px;
+height: 80px;
+font-size: 16px;
+border: none;
+border-radius: 50%;
+}
+
+#crawlBtn{
+    left: 20px;
+}
+#jumpBtn{
+    right: 100px;
+}
+
+.icons{
+    color: yellow;
+        font-size: 40px;
+    text-align: center;
+}
+
+#finScreen #score{
+    font-weight: bold;
+    font-size: 48px;
+    color: Tomato ;
+    margin: 0;
+    padding: 0;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+}
+details {
+    background-color: #FF6347;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: white;
+}
+details summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+#finScreen h2 {
+    animation: gameOverAnimation 2s ease-out;
+}
+@keyframes gameOverAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+background-color: darkblue;
+    }
+25% {
+opacity: 0;
+background-color: darkblue;
+}
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+#hitWith {
+    animation: hitwith 3s ease-out;
+}
+@keyframes hitwith {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+background-color: darkblue;
+    }
+25% {
+opacity: 0;
+background-color: darkblue;
+}
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+#scoreId {
+animation: score  4s ease-out;
+}
+@keyframes score {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+background-color: darkblue;
+    }
+25% {
+opacity: 0;
+}
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+       color: yellow;
+    }
+}
+
+#score {
+animation: score  4.5S ease-out;
+}
+@keyframes score {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+background-color: darkblue;
+    }
+25% {
+opacity: 0;
+}
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+       color: yellow;
+    }
+}
+
+#status{
+    visibility: hidden;
+}
+#catImage {
+        /* ... other styles ... */
+    width: 128px; /* Example fixed width */
+}
+
+#obj{
+        width: 150px;
+
+        }
+
+        @keyframes move-left {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-1300px);
+            }
+          }
+          
+          .obj-animate {
+            animation: move-left 3.5s linear 1;
+          }
+          
+          @keyframes jump {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-150px); }
+            50% { transform: translateY(-150px); }
+75% { transform: translateY(-150px); }
+            100%{ transform: translateY(0); }
+          }
+
+          .jumping{
+            animation: jump 1.5s ease;
+          }
