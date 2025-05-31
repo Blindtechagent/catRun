@@ -1,14 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const userAgent = navigator.userAgent.toLowerCase();
-    if (userAgent.includes("windows")) {
-        document.getElementById('notAvailable').style.display = 'none';
-        document.getElementById('available').style.display = 'block';
-    } else {
-        document.getElementById('available').style.display = 'none';
-        document.getElementById('notAvailable').style.display = 'block';
-    }
-});
-
+ 
 // DOM Elements
 const startBtn = document.getElementById('startBtn');
 const actionButtons = document.querySelectorAll(".action-btn");
@@ -30,10 +20,7 @@ let isRunning = false;
 // Image sources for different objects
 const images = {
     rock: 'images/rock.png',
-    woods: 'images/woods.png',
-    tunnel: 'images/tunnel.png',
-    bushes: 'images/bushes.png',
-    branches: 'images/branches.jpg'
+    woods: 'images/woods.png'
 };
 
 // Sound effects
@@ -161,35 +148,25 @@ function restart() {
 function Objects() {
     const ObjectsList = [
         'Rock',
-        'Spiny Bushes',
+        'Low Fence',
         'Woods',
         'Hanging Branches',
         'Tunnel Passage'
     ];
 
     currentObj = ObjectsList[Math.floor(Math.random() * ObjectsList.length)];
-    setTimeout(() => {
-        announce(currentObj);
-    }, 800);
-    setTimeout(function () {
+   setTimeout( () => {
+     announce(currentObj);
+   },800);
+     setTimeout( function() {
         document.getElementById('jumpBtn').disabled = false;
         document.getElementById('crawlBtn').disabled = false;
-    }, 1100);
+     }, 1100);
 
     if (currentObj === 'Rock') {
         showImage(images.rock);
     } else if (currentObj === 'Woods') {
         showImage(images.woods);
-    } else if (currentObj == 'Tunnel Passage') {
-        showImage(images.tunnel);
-        objec.style.width = '600px';
-        setTimeout(() => {
-            objec.style.width = 'auto';
-        }, 4000);
-    } else if (currentObj == 'Spiny Bushes') {
-        showImage(images.bushes);
-    } else if (currentObj == 'Hanging Branches') {
-        showImage(images.branches);
     } else {
         showImage(images.rock);
     }
@@ -219,7 +196,7 @@ function react(userAction, timeOut) {
     document.getElementById('jumpBtn').disabled = true;
     document.getElementById('crawlBtn').disabled = true;
 
-    const jumpObjects = ['Rock', 'Spiny Bushes', 'Woods'];
+    const jumpObjects = ['Rock', 'Low Fence', 'Woods'];
     const isJump = jumpObjects.includes(currentObj);
 
     if ((isJump && userAction === 'jump') || (!isJump && userAction === 'crawl')) {
@@ -301,8 +278,7 @@ function checkProgress() {
             gameInterval = setInterval(Objects, 3000);
             reactTime = 1300;
             objec.style.animationDuration = '2.3s';
-        }
-    }
+            }
 }
 
 // Announce messages to screen readers
