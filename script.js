@@ -182,10 +182,6 @@ function Objects() {
         showImage(images.woods);
     } else if (currentObj == 'Tunnel Passage') {
         showImage(images.tunnel);
-        objec.style.width = '600px';
-        setTimeout(() => {
-            objec.style.width = 'auto';
-        }, 4000);
     } else if (currentObj == 'Spiny Bushes') {
         showImage(images.bushes);
     } else if (currentObj == 'Hanging Branches') {

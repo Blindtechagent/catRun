@@ -117,8 +117,8 @@ window.addEventListener('DOMContentLoaded', () => {
         catImage.style.left = `${canvasWidth / 7}px`;
 
         
-        objec.style.top = `${top - 15}px`;
-        objec.style.left = `${canvasWidth / 10 + 900}px`;
+        objec.style.top = `${top - 10}px`;
+        objec.style.left = `${canvasWidth / 10 + 1000}px`;
     }
 
     // Wait for image to fully load
